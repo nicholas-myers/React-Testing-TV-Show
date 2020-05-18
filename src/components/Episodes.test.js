@@ -2,11 +2,11 @@ import React from "react";
 
 import { render, waitFor } from "@testing-library/react";
 
-import { fetchShow as mockFetchShow } from "./api/fetchShow";
+// import { fetchShow as mockFetchShow } from "./api/fetchShow";
 
-import App from "./App";
-
-jest.mock("./api/fetchShow");
+// import App from "./App";
+import Episodes from "./Episodes"
+// jest.mock("./api/fetchShow");
 
 const strangeData = {
   data: {
@@ -88,12 +88,8 @@ const strangeData = {
   },
 };
 
-test("App renders without any errors", async () => {
+test("renders the Episodes without errors", () => {
+    render(<Episodes episodes={strangeData.data._embedded.episodes}/>)
+})
 
-    mockFetchShow.mockResolvedValueOnce(strangeData);
-  const { getByText, queryAllByText } = render(<App />);
-  expect(getByText(/Fetching data.../i)).toBeInTheDocument();
-  setTimeout(waitFor(() => expect(queryAllByText(/stranger things/i)).toHaveLength(2)), 50);
-  expect(mockFetchShow).toHaveBeenCalledTimes(1);
-});
-
+test("")
