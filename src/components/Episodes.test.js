@@ -93,9 +93,9 @@ test("renders the Episodes without errors", () => {
 })
 
 test("renders episodes when episodes are passed down", () => {
-    const {queryAllByTestId, rerender} = render(<Episodes episodes={[]}/>)
+    const { queryAllByTestId, rerender } = render(<Episodes episodes={[]}/>)
     expect(queryAllByTestId(/episodes/i)).toHaveLength(0)
 
     rerender(<Episodes episodes={strangeData.data._embedded.episodes}/>)
-    expect(queryAllByTestId(/episodes/i).toHaveLength(2))
+    expect(queryAllByTestId(/episodes/i)).toHaveLength(2)
 })
